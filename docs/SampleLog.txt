@@ -1,0 +1,198 @@
+================================================================================
+Start! 2016-01-08 11:15:21
+================================================================================
+Exe: /Applications/Unity531/Unity.app/Contents/Frameworks/Tools/UnusedByteCodeStripper2/UnusedBytecodeStripper2.exe
+Path: /builder/GameClient/Temp/StagingArea/Data/Managed
+---- ENVS-----
+..trimmed..
+MONO_PATH=/Applications/Unity531/Unity.app/Contents/Frameworks/MonoBleedingEdge/lib/mono/4.0
+MONO_CFG_DIR=/Applications/Unity531/Unity.app/Contents/Frameworks/MonoBleedingEdge/etc
+---- ARGS -----
+args[0]='-out'
+args[1]='/builder/GameClient/Temp/StagingArea/Data/Managed/tempStrip'
+args[2]='-l'
+args[3]='none'
+args[4]='-c'
+args[5]='link'
+args[6]='-b'
+args[7]='False'
+args[8]='-x'
+args[9]='/Applications/Unity531/PlaybackEngines/iOSSupport/Whitelists/Core.xml'
+args[10]='-f'
+args[11]='/Applications/Unity531/Unity.app/Contents/Frameworks/il2cpp/LinkerDescriptors'
+args[12]='-x'
+args[13]='/builder/GameClient/Temp/StagingArea/Data/Managed/../platform_native_link.xml'
+args[14]='-x'
+args[15]='/builder/GameClient/Temp/StagingArea/Data/methods_pointedto_by_uievents.xml'
+args[16]='-x'
+args[17]='/builder/GameClient/Assets/link.xml'
+args[18]='-d'
+args[19]='/builder/GameClient/Temp/StagingArea/Data/Managed'
+args[20]='-a'
+args[21]='/builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp-firstpass.dll'
+args[22]='-a'
+args[23]='/builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll'
+---------------
+Custom strip-attribute.xml found: /builder/GameClient/Assets/strip-attribute.xml
+CustomAttribute: ProtoBuf.ProtoContractAttribute
+CustomAttribute: ProtoBuf.ProtoMemberAttribute
+CustomAttribute: GameCommon.Data.EidCategoryAttribute
+CustomAttribute: GameCommon.Data.RefAttribute
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp-firstpass.dll
+  - System.Diagnostics.DebuggerHiddenAttribute : 40
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 11
+  - System.Reflection.DefaultMemberAttribute : 4
+  - UnityEngine.AddComponentMenu : 2
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll
+  - System.Diagnostics.DebuggerHiddenAttribute : 4044
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 3300
+  - System.Runtime.CompilerServices.ExtensionAttribute : 266
+  - UnityEngine.AddComponentMenu : 174
+  - UnityEngine.HideInInspector : 173
+  - System.ObsoleteAttribute : 103
+  - UnityEngine.ExecuteInEditMode : 52
+  - System.Diagnostics.DebuggerStepThroughAttribute : 40
+  - UnityEngine.ContextMenu : 36
+  - UnityEngine.TooltipAttribute : 18
+  - System.Diagnostics.CodeAnalysis.SuppressMessageAttribute : 11
+  - System.Reflection.DefaultMemberAttribute : 9
+  - UnityEngine.DisallowMultipleComponent : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Common.Logging.dll
+  - System.AttributeUsageAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Core.Unity.dll
+  - System.Runtime.CompilerServices.ExtensionAttribute : 36
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 26
+  - System.Diagnostics.DebuggerHiddenAttribute : 14
+  - ProtoBuf.ProtoMemberAttribute : 6
+  - ProtoBuf.ProtoContractAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/GameCommon.Unity.dll
+  - ProtoBuf.ProtoMemberAttribute : 739
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 531
+  - ProtoBuf.ProtoContractAttribute : 268
+  - System.Diagnostics.DebuggerHiddenAttribute : 129
+  - System.Runtime.CompilerServices.ExtensionAttribute : 94
+  - GameCommon.Data.EidCategoryAttribute : 18
+  - GameCommon.Data.RefAttribute : 7
+  - System.Reflection.DefaultMemberAttribute : 6
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/GameCommonSerializer.dll
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/HOTween.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 24
+  - System.Diagnostics.DebuggerHiddenAttribute : 16
+  - System.ObsoleteAttribute : 3
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Json.Unity.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 586
+  - System.Runtime.CompilerServices.ExtensionAttribute : 46
+  - System.Diagnostics.DebuggerHiddenAttribute : 44
+  - System.AttributeUsageAttribute : 11
+  - System.Reflection.DefaultMemberAttribute : 8
+  - System.Diagnostics.DebuggerStepThroughAttribute : 4
+  - System.ObsoleteAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/LitJson.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 53
+  - System.Reflection.DefaultMemberAttribute : 1
+  - System.CLSCompliantAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/Mono.Security.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 28
+  - System.CLSCompliantAttribute : 20
+  - System.Reflection.DefaultMemberAttribute : 5
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/System.Core.dll
+  - System.Runtime.CompilerServices.ExtensionAttribute : 328
+  - System.Diagnostics.DebuggerHiddenAttribute : 236
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 213
+  - System.AttributeUsageAttribute : 7
+  - System.MonoTODOAttribute : 3
+  - System.Reflection.DefaultMemberAttribute : 2
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/System.Xml.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 101
+  - System.MonoTODOAttribute : 89
+  - System.AttributeUsageAttribute : 30
+  - System.Reflection.DefaultMemberAttribute : 30
+  - System.Diagnostics.DebuggerHiddenAttribute : 25
+  - System.ObsoleteAttribute : 13
+  - System.CLSCompliantAttribute : 8
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/System.dll
+  - System.MonoTODOAttribute : 197
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 114
+  - System.Runtime.InteropServices.ComVisibleAttribute : 69
+  - System.ObsoleteAttribute : 48
+  - System.Reflection.DefaultMemberAttribute : 47
+  - System.AttributeUsageAttribute : 40
+  - System.Diagnostics.DebuggerHiddenAttribute : 27
+  - System.CLSCompliantAttribute : 6
+  - System.Runtime.ConstrainedExecution.ReliabilityContractAttribute : 2
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/UnityEngine.Networking.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 21
+  - UnityEngine.AddComponentMenu : 14
+  - System.AttributeUsageAttribute : 9
+  - System.ObsoleteAttribute : 9
+  - UnityEngine.DisallowMultipleComponent : 7
+  - UnityEngine.ExecuteInEditMode : 1
+  - System.Reflection.DefaultMemberAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 129
+  - UnityEngine.AddComponentMenu : 31
+  - System.Diagnostics.DebuggerHiddenAttribute : 30
+  - System.ObsoleteAttribute : 27
+  - UnityEngine.TooltipAttribute : 12
+  - UnityEngine.ExecuteInEditMode : 11
+  - UnityEngine.DisallowMultipleComponent : 7
+  - System.Reflection.DefaultMemberAttribute : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/UnityEngine.dll
+  - UnityEngine.Internal.ExcludeFromDocsAttribute : 478
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 366
+  - System.ObsoleteAttribute : 272
+  - System.AttributeUsageAttribute : 56
+  - System.Runtime.CompilerServices.ExtensionAttribute : 27
+  - System.Reflection.DefaultMemberAttribute : 12
+  - System.Diagnostics.CodeAnalysis.SuppressMessageAttribute : 6
+  - System.Diagnostics.DebuggerHiddenAttribute : 5
+  - System.Diagnostics.DebuggerStepThroughAttribute : 2
+  - UnityEngine.ExecuteInEditMode : 1
+  - UnityEngine.AddComponentMenu : 1
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/mscorlib.dll
+  - System.Runtime.InteropServices.ComVisibleAttribute : 1311
+  - System.MonoTODOAttribute : 461
+  - System.CLSCompliantAttribute : 374
+  - System.Runtime.ConstrainedExecution.ReliabilityContractAttribute : 202
+  - System.AttributeUsageAttribute : 162
+  - System.ObsoleteAttribute : 138
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 61
+  - System.Reflection.DefaultMemberAttribute : 48
+  - System.Diagnostics.DebuggerHiddenAttribute : 19
+  - System.Diagnostics.DebuggerDisplayAttribute : 13
+  - System.Diagnostics.DebuggerStepThroughAttribute : 9
+- ProcessDll : /builder/GameClient/Temp/StagingArea/Data/Managed/protobuf-net.dll
+  - System.Diagnostics.DebuggerHiddenAttribute : 12
+  - System.AttributeUsageAttribute : 11
+  - System.Reflection.DefaultMemberAttribute : 6
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 2
+  - System.ObsoleteAttribute : 1
+* Summary * 
+  - System.Runtime.CompilerServices.CompilerGeneratedAttribute : 5566
+  - System.Diagnostics.DebuggerHiddenAttribute : 4641
+  - System.Runtime.InteropServices.ComVisibleAttribute : 1380
+  - System.Runtime.CompilerServices.ExtensionAttribute : 797
+  - System.MonoTODOAttribute : 750
+  - ProtoBuf.ProtoMemberAttribute : 745
+  - System.ObsoleteAttribute : 615
+  - UnityEngine.Internal.ExcludeFromDocsAttribute : 478
+  - System.CLSCompliantAttribute : 409
+  - System.AttributeUsageAttribute : 327
+  - ProtoBuf.ProtoContractAttribute : 269
+  - UnityEngine.AddComponentMenu : 222
+  - System.Runtime.ConstrainedExecution.ReliabilityContractAttribute : 204
+  - System.Reflection.DefaultMemberAttribute : 180
+  - UnityEngine.HideInInspector : 173
+  - UnityEngine.ExecuteInEditMode : 65
+  - System.Diagnostics.DebuggerStepThroughAttribute : 55
+  - UnityEngine.ContextMenu : 36
+  - UnityEngine.TooltipAttribute : 30
+  - GameCommon.Data.EidCategoryAttribute : 18
+  - System.Diagnostics.CodeAnalysis.SuppressMessageAttribute : 17
+  - UnityEngine.DisallowMultipleComponent : 15
+  - System.Diagnostics.DebuggerDisplayAttribute : 13
+  - GameCommon.Data.RefAttribute : 7
+Spawn: Mono=/Applications/Unity531/Unity.app/Contents/Frameworks/MonoBleedingEdge/bin/mono
+       Exec=/Applications/Unity531/Unity.app/Contents/Frameworks/Tools/UnusedByteCodeStripper2/UnusedBytecodeStripper2.org.exe
+       Args="/Applications/Unity531/Unity.app/Contents/Frameworks/Tools/UnusedByteCodeStripper2/UnusedBytecodeStripper2.org.exe" "-out" "/builder/GameClient/Temp/StagingArea/Data/Managed/tempStrip" "-l" "none" "-c" "link" "-b" "False" "-x" "/Applications/Unity531/PlaybackEngines/iOSSupport/Whitelists/Core.xml" "-f" "/Applications/Unity531/Unity.app/Contents/Frameworks/il2cpp/LinkerDescriptors" "-x" "/builder/GameClient/Temp/StagingArea/Data/Managed/../platform_native_link.xml" "-x" "/builder/GameClient/Temp/StagingArea/Data/methods_pointedto_by_uievents.xml" "-x" "/builder/GameClient/Assets/link.xml" "-d" "/builder/GameClient/Temp/StagingArea/Data/Managed" "-a" "/builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp-firstpass.dll" "-a" "/builder/GameClient/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll"
+Done!
