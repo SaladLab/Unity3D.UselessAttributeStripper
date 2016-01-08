@@ -18,11 +18,12 @@ namespace UselessAttributeStripper
                 ShowUsage();
                 return 1;
             }
+
             Log("================================================================================");
             Log("Start! " + DateTime.Now);
             Log("================================================================================");
 
-            Dump(args);
+            DumpArgs(args);
 
             List<string> attributeNames;
             List<string> dllFileNames;
@@ -44,20 +45,23 @@ namespace UselessAttributeStripper
             Console.WriteLine("https://github.com/SaladbowlCreative/Unity3D.UselessAttributeStripper");
         }
 
-        private static void Dump(string[] args)
+        private static void DumpArgs(string[] args)
         {
             Log(string.Format("Exe: {0}", Assembly.GetExecutingAssembly().Location));
             Log(string.Format("Path: {0}", Environment.CurrentDirectory));
 
+            Log("---- ARGS -----");
+            for (var i = 0; i < args.Length; i++)
+                Log(string.Format("args[{0}]='{1}'", i, args[i]));
+            Log("---------------");
+        }
+
+        private static void DumpEnvs()
+        {
             Log("---- ENVS-----");
             var variables = Environment.GetEnvironmentVariables();
             foreach (DictionaryEntry item in variables)
                 Log(string.Format("{0}={1}", item.Key, item.Value));
-
-            Log("---- ARGS -----");
-            for (var i = 0; i < args.Length; i++)
-                Log(string.Format("args[{0}]='{1}'", i, args[i]));
-
             Log("---------------");
         }
 
@@ -130,9 +134,16 @@ namespace UselessAttributeStripper
                     continue;
 
                 Log("- ProcessDll : " + dllFileName);
-                stripper.ProcessDll(dllFileName);
-                foreach (var item in stripper.StripCountMap.OrderByDescending(i => i.Value))
-                    Log(string.Format("  - {0} : {1}", item.Key, item.Value));
+                try
+                {
+                    stripper.ProcessDll(dllFileName);
+                    foreach (var item in stripper.StripCountMap.OrderByDescending(i => i.Value))
+                        Log(string.Format("  - {0} : {1}", item.Key, item.Value));
+                }
+                catch (Exception e)
+                {
+                    Log("  - Failed: " + e);
+                }
             }
 
             // show summary
@@ -147,22 +158,43 @@ namespace UselessAttributeStripper
             try
             {
                 var monoCfgDir = Environment.GetEnvironmentVariable("MONO_CFG_DIR");
-                var monoPath = monoCfgDir.Substring(0, monoCfgDir.Length - 3) + "bin/mono";
+                if (string.IsNullOrEmpty(monoCfgDir))
+                {
+                    // Windows
 
-                var currentModulePath = Assembly.GetExecutingAssembly().Location;
-                var orgModulePath = currentModulePath.Substring(0, currentModulePath.Length - 3) + "org.exe";
+                    var currentModulePath = Assembly.GetExecutingAssembly().Location;
+                    var orgModulePath = currentModulePath.Substring(0, currentModulePath.Length - 3) + "org.exe";
 
-                var orgArgs = '"' + orgModulePath + '"' + ' ' + string.Join(" ", args.Select(a => '"' + a + '"'));
-                Log(string.Format("Spawn: Mono={0}", monoPath));
-                Log(string.Format("       Exec={0}", orgModulePath));
-                Log(string.Format("       Args={0}", orgArgs));
-                var handle = Process.Start(monoPath, orgArgs);
-                handle.WaitForExit();
-                return handle.ExitCode;
+                    var orgArgs = string.Join(" ", args.Select(a => '"' + a + '"'));
+                    Log(string.Format("Spawn: Exec={0}", orgModulePath));
+                    Log(string.Format("       Args={0}", orgArgs));
+                    var handle = Process.Start(orgModulePath, orgArgs);
+                    handle.WaitForExit();
+                    return handle.ExitCode;
+                }
+                else
+                {
+                    // OSX has env-values for running Mono
+                    // - MONO_PATH=/Applications/Unity531/Unity.app/Contents/Frameworks/MonoBleedingEdge/lib/mono/4.0
+                    // - MONO_CFG_DIR=/Applications/Unity531/Unity.app/Contents/Frameworks/MonoBleedingEdge/etc
+
+                    var monoPath = monoCfgDir.Substring(0, monoCfgDir.Length - 3) + "bin/mono";
+                    var currentModulePath = Assembly.GetExecutingAssembly().Location;
+                    var orgModulePath = currentModulePath.Substring(0, currentModulePath.Length - 3) + "org.exe";
+
+                    var orgArgs = '"' + orgModulePath + '"' + ' ' + string.Join(" ", args.Select(a => '"' + a + '"'));
+                    Log(string.Format("Spawn: Mono={0}", monoPath));
+                    Log(string.Format("       Exec={0}", orgModulePath));
+                    Log(string.Format("       Args={0}", orgArgs));
+                    var handle = Process.Start(monoPath, orgArgs);
+                    handle.WaitForExit();
+                    return handle.ExitCode;
+                }
             }
             catch (Exception e)
             {
                 Log(string.Format("SpawnOriginalExecutable got exception. Exception={0}", e));
+                DumpEnvs();
                 return 1;
             }
         }
