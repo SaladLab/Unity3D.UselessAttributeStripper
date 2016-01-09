@@ -1,6 +1,21 @@
 # Unity3D.UselessAttributeStripper
 
-Useless attribute stripper for IL2CPPed executable. It will help for reducing app size for iOS.
+For iOS application, Unity3D uses [IL2CPP](http://blogs.unity3d.com/kr/2015/05/06/an-introduction-to-ilcpp-internals/)
+for transforming your .NET IL code to native one,
+which makes the size of your executable much larger than you expect.
+It's not easy problem to make it smaller. However, it is mandatory to keep the size
+under 100MB to allow users to download your app over the air.
+
+This tools will give you small margin to shrink your app a little.
+IL2CPP makes a small code for every attribute in your app assembly. It's small.
+But with thousands of application, it may bloat your code size. This tool provide
+a way to remove useless attributes from your app, which doens't affect running at all.
+
+The margin depends on your code patern. For my project which heavily exploited coroutines,
+it removed 17,000 attributes from whole assemblies and reduced the uncompressed app size
+to 126MB from 144MB (-18MB). It seemed small but because code area in app
+will be encrypted before compression, this size really mattered.
+For detailed information, read [Sample Case](./docs/SampleCase.md).
 
 ### Setup
 
@@ -8,21 +23,32 @@ Unzip [a release zip file](https://github.com/SaladbowlCreative/Unity3D.UselessA
 - Run setup.py with administrative privilege because it may update your application directory.
 - If you didn't install Unity3D to default directory, you need to check your unity3d installation path.
 
-if you installed unity to default path:
-```
-setup.py install
+For OSX
+```sh
+# if unity3d was installed to default directory
+sudo python setup.py install    
+
+# if unity3d was installed to /Application/Unity531
+sudo python setup.py install /Application/Unity531
 ```
 
-if you didn't install unity to default path:
+For Windows, run a command as administrator,
+```sh
+# if unity3d was installed to default directory
+setup.py install    
+
+# if unity3d was installed to C:\Program Files\Unity531
+setup.py install "C:\Program Files\Unity531"
 ```
-setup.py install [unity-path]
-```
+
+After installed, this utility will be running whenever unity3d builds application with IL2CPP.
 
 ### Check what's going on
 
-While unity3D builds application, it will write log on intermediate path.
-For iOS with Unity5 & IL2CPP you can find log-file at
-`./Client/Output/Data/Managed/UselessAttributeStripper.txt`. (you can see [sample log](./docs/SampleLog.txt))
+During unity3D builds application it runs a few programs like mono compiler and IL2CPP.
+At this time this tool will be executed and it will write log messages
+to file in intermediate directory. You can find log file at `./Project/Output/Data/Managed/UselessAttributeStripper.txt`.
+(you can see [sample log](./docs/SampleLog.txt))
 
 With log, you can know which attributes were removed from DLLs and the amount of removal.
 ```
@@ -42,6 +68,22 @@ At the end of log, total removal infomation will be written.
   - (trimmed)
 ```
 
-### More
+### Configuration
 
-[Sample Case](./docs/SampleCase.md)
+This tool has default attribute [lists](https://github.com/SaladbowlCreative/Unity3D.UselessAttributeStripper/blob/master/src/UselessAttributeStripper/BuiltinConfiguration.cs) to be removed.
+These were chosen in a conservative attitude to avoid running problem.
+And if you want to remove other attributes, you can specify
+your own attribute lists on Assets/`strip-attribute.xml` file.
+This file looks like
+```xml
+<strip-attribute>
+  <!-- Protobuf.net (precompiler makes app don't need these attributes) -->
+  <type fullname="ProtoBuf.ProtoContractAttribute"/>
+  <type fullname="ProtoBuf.ProtoMemberAttribute"/>
+  <!-- Project-related -->
+  <type fullname="GameCommon.Data.EidCategoryAttribute"/>
+  <type fullname="GameCommon.Data.RefAttribute"/>
+</strip-attribute>
+```
+To let tool detecting list xml, `links.xml` should exist at the same directory.
+(Assets/links.xml for Assets/strip-attribute.xml)
