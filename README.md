@@ -1,21 +1,23 @@
 # Unity3D.UselessAttributeStripper
 
 For iOS application, Unity3D uses [IL2CPP](http://blogs.unity3d.com/kr/2015/05/06/an-introduction-to-ilcpp-internals/)
-for transforming your .NET IL code to native one,
+for translating your .NET IL code to native one,
 which makes the size of your executable much larger than you expect.
 It's not easy problem to make it smaller. However, it is mandatory to keep the size
-under 100MB to allow users to download your app over the air.
+under 100MB to allow iOS users to download your app over the air.
 
 This tools will give you small margin to shrink your app a little.
 IL2CPP makes a small code for every attribute in your app assembly. It's small.
-But with thousands of application, it may bloat your code size. This tool provide
-a way to remove useless attributes from your app, which doens't affect running at all.
+But with thousands of .NET attributes, it may bloat your code size.
+This tool provide a way to remove useless attributes from your app,
+which doens't affect running at all.
+(For detailed information, read [Under The Hood](./docs/UnderTheHood.md).)
 
 The margin depends on your code patern. For my project which heavily exploited coroutines,
-it removed 17,000 attributes from whole assemblies and reduced the uncompressed app size
+it could remove 17,000 attributes from whole assemblies and reduced the uncompressed app size
 to 126MB from 144MB (-18MB). It seemed small but because code area in app
 will be encrypted before compression, this size really mattered.
-For detailed information, read [Sample Case](./docs/SampleCase.md).
+(For detailed information of this case, read [Sample Case](./docs/SampleCase.md).)
 
 ### Setup
 
@@ -87,3 +89,7 @@ This file looks like
 ```
 To let tool detecting list xml, `links.xml` should exist at the same directory.
 (Assets/links.xml for Assets/strip-attribute.xml)
+
+### How IL2CPP generate C++ code for .NET attribute
+
+IL2CPP generates C++ code for making native binary from .NET IL code.
