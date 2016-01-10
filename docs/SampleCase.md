@@ -2,9 +2,9 @@
 
 This case motivated me to write this tool. My team was struggling to find a way to
 make app size under 100MB. After many trials including removing unused codes and resources,
-I found that size was still over 100MB. But with this tool sucessfully we could make it.
-In this article, I will compare original app and attribute stripped app and show you
-how this tool help you.
+size was still over 100MB. But with this tool we could make it sucessfully.
+In this article, I will compare original app and attribute-stripped one
+and show you how this tool help you.
 
 ### Environment
 
@@ -16,7 +16,7 @@ how this tool help you.
 
 This project heavily depends on coroutine and that makes app DLL to contain a lot of
 attributes. (check [UnderTheHood](./UnderTheHood.md).)
-After building app, size of app and sections inside are checked.
+After building app without this tool, size of app and sections inside are checked.
 
 Size of executable: 151,795,952 bytes (compressed to 40,210,173 bytes)
 ```
