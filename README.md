@@ -89,7 +89,3 @@ This file looks like
 ```
 To let tool detecting list xml, `links.xml` should exist at the same directory.
 (Assets/links.xml for Assets/strip-attribute.xml)
-
-### How IL2CPP generate C++ code for .NET attribute
-
-IL2CPP generates C++ code for making native binary from .NET IL code.
