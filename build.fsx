@@ -39,6 +39,7 @@ Target "Help" <| fun _ ->
         else None)
 
 "Clean"
+  ==> "Restore"
   ==> "Build"
   ==> "Package"
 
