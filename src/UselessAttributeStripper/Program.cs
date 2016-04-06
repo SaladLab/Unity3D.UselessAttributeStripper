@@ -42,7 +42,7 @@ namespace UselessAttributeStripper
         private static void ShowUsage()
         {
             Console.WriteLine("Useless Attribute Stripper for Unity3D IL2CPP");
-            Console.WriteLine("https://github.com/SaladbowlCreative/Unity3D.UselessAttributeStripper");
+            Console.WriteLine("https://github.com/SaladLab/Unity3D.UselessAttributeStripper");
         }
 
         private static void DumpArgs(string[] args)
