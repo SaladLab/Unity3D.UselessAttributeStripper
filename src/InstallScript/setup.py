@@ -12,10 +12,8 @@ def find_stipper_path(unity_path):
         stripper_path = os.path.join(base_path, r"Editor\Data\Tools\UnusedByteCodeStripper2")
     else:
         # OSX (/Applications/Unity/Unity.app/Contents/Frameworks/Tools/UnusedByteCodeStripper2)
-        print "nt"    
-        base_path = unity_path or r"/Applications/Unity"
-        stripper_path = os.path.join(base_path, r"Unity.app/Contents/Frameworks/Tools/UnusedByteCodeStripper2")
-
+        base_path = unity_path or r"/Applications/Unity/Unity.app"
+        stripper_path = os.path.join(base_path, "Contents/Frameworks/Tools/UnusedByteCodeStripper2")
     if os.path.exists(stripper_path):
         print "Path:", stripper_path
         return stripper_path
@@ -33,9 +31,9 @@ def install(unity_path):
         print "ERROR: UselessAttributeStripper is already installed."
         return 1
 
-    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.exe"), 
+    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.exe"),
                 os.path.join(target_path, "UnusedBytecodeStripper2.org.exe"))
-    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.exe.mdb"), 
+    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.exe.mdb"),
                 os.path.join(target_path, "UnusedBytecodeStripper2.org.exe.mdb"))
     shutil.copy("UselessAttributeStripper.exe",
                 os.path.join(target_path, "UnusedBytecodeStripper2.exe"))
@@ -56,9 +54,9 @@ def uninstall(unity_path):
         return 1
 
     os.remove(os.path.join(target_path, "UnusedBytecodeStripper2.exe"))
-    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.org.exe"), 
+    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.org.exe"),
                 os.path.join(target_path, "UnusedBytecodeStripper2.exe"))
-    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.org.exe.mdb"), 
+    shutil.move(os.path.join(target_path, "UnusedBytecodeStripper2.org.exe.mdb"),
                 os.path.join(target_path, "UnusedBytecodeStripper2.exe.mdb"))
 
     print "done!"
@@ -87,8 +85,14 @@ def show_usage():
 
 
 def main():
+    for item in sys.argv:
+        print item
     command = sys.argv[1] if len(sys.argv) > 1 else ""
     unity_path = sys.argv[2] if len(sys.argv) > 2 else ""
+
+    print "command: " + command
+    print "unity_path: " + unity_path
+
     if command == "install":
         sys.exit(install(unity_path))
     elif command == "uninstall":
